@@ -2,26 +2,17 @@ const pg = require('./index.js').pg;
 
 module.exports = {
 
-  getMostRecentSurges: (callback) => {
-    pg.table('surgebyzip')
+  getMostRecentSurges: () => {
+    return pg.table('surgebyzip')
       .select('zipcode', 'surge')
       .orderBy('id')
       .limit(27)
-      .then((result) => {
-        callback(null, result);
-      })
-      .catch((error) => {
-        callback(error, null);
-      })
   },
-  updatePG: (data, callback) => {
+  updatePG: (data) => {
     pg.table('surgebyzip')
       .insert(data)
-      .then((result) => {
-        callback(null, result);
-      })
       .catch((error) => {
-        callback(error, null);
+        console.error(error);
       })
   },
   updateRedis: (data, callback) => {
