@@ -12,6 +12,7 @@ const geolib = require('geolib');
 const axios = require('axios'); 
 const driverData = require('../fakeData/driverData.js');
 const eventData = require('../fakeData/eventData.js');
+const getZip = require('../fakeData/passengerData.js');
 
 const basePrice = 2;
 const baseRate = 2;
@@ -60,9 +61,20 @@ router.get('/request/fare', async (ctx) => {
     var dist = geolib.getDistance(
       {latitude: loc_lat, longitude: loc_lon}, 
       {latitude: dest_lat, longitude: dest_lon}, 1, 1) * 0.000621371;
+
+    // var loc_zip = getZip();
+    // var dest_zip = getZip();
     // var dist = findDistance(loc_zip, dest_zip);
     // dist = dist * 0.000621371; // meters to miles
+    const now = Date.now();
     var surge = await client.getAsync(loc_zip.toString());
+
+
+    var surge = await db.getMostRecentSurge(loc_zip);
+    surge = surge[0].surge;
+    console.log(Date.now() - now);
+    //var surge = await db.getRawSurge(loc_zip);
+
     var fare = basePrice + (dist * baseRate * surge);
     ctx.status = 200; 
     ctx.body = fare;

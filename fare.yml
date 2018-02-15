@@ -1,28 +1,44 @@
 config:
   target: 'http://localhost:9000'
   phases:
+    # - duration: 60
+    #   arrivalRate: 450
+    #   rampTo: 600
+    # - duration: 60
+    #   arrivalRate: 600
+    #   rampTo: 850
+    # - duration: 60
+    #   arrivalRate: 850
+    #   rampTo: 1100
+    # - duration: 60
+    #   arrivalRate: 1100
+    #   rampTo: 1350
+    # - duration: 60
+    #   arrivalRate: 1350
+    #   rampTo: 1600
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 150
+    - duration: 60
+      arrivalRate: 150
+      rampTo: 300
     - duration: 60
       arrivalRate: 300
-      rampTo: 550
+      rampTo: 500
     - duration: 60
-      arrivalRate: 550
-      rampTo: 800
+      arrivalRate: 500
+      rampTo: 750
     - duration: 60
-      arrivalRate: 800
-      rampTo: 1100
-    - duration: 60
-      arrivalRate: 1100
-      rampTo: 1500
-    - duration: 60
-      arrivalRate: 1500
-      rampTo: 2000
+      arrivalRate: 750
+      rampTo: 1000
   defaults:
     # headers:
     #   x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
     - get:
-        url: "/request/fare?loc_zip=94102&loc_lat=37.783783&loc_lon=-122.4114007&dest_zip=94117&dest_lat=37.7687991&dest_lon=-122.4627462&date_ms=1517558740"
+        # url: "/request/fare"
+        url: "/request/fare?loc_zip=94104&loc_lat=37.793186&loc_lon=-122.4036837&dest_zip=94117&dest_lat=37.7687991&dest_lon=-122.4627462&date_ms=1517558740"
         # json:
           # loc_zip: 94102
           # loc_lat: 37.783783

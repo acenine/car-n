@@ -1,12 +1,25 @@
 config:
-  target: 'https://localhost:9000'
+  target: 'http://localhost:9000'
   phases:
     - duration: 60
-      arrivalRate: 100
+      arrivalRate: 260
+      rampTo: 320
+    - duration: 60
+      arrivalRate: 320
+      rampTo: 380
+    - duration: 60
+      arrivalRate: 380
+      rampTo: 440
+    - duration: 60
+      arrivalRate: 440
+      rampTo: 500
+    - duration: 60
+      arrivalRate: 560
+      rampTo: 620
   defaults:
     # headers:
     #   x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
     - get:
-        url: "/get/surge/94104"
+        url: "/get/surges"

@@ -31,5 +31,15 @@ const zips = {
 module.exports = {
   zip_locs: zips,
   zips: Object.keys(zips),
-  locs: Object.values(zips)
+  locs: Object.values(zips),
+  randomZip: () => {
+    var i = getRandom(0, 27);
+    return module.exports.zips[i]
+  }
+}
+
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
