@@ -28,9 +28,9 @@ client.on("error", function (err) {
 
 
  
-// router.get('/', (ctx, next) => {
-//   console.log(ctx)
-// });
+router.get('/', (ctx, next) => {
+  ctx.body = "Hello KOA";
+});
 var updateRedis = async (data) => {
   data.forEach((item) => {
     client.set(item.zipcode, item.surge);
@@ -70,8 +70,8 @@ router.get('/request/fare', async (ctx) => {
     var surge = await client.getAsync(loc_zip.toString());
 
 
-    var surge = await db.getMostRecentSurge(loc_zip);
-    surge = surge[0].surge;
+    // var surge = await db.getMostRecentSurge(loc_zip);
+    // surge = surge[0].surge;
     console.log(Date.now() - now);
     //var surge = await db.getRawSurge(loc_zip);
 
