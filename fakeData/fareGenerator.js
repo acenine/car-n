@@ -7,9 +7,9 @@ var generateData = (startDate, mins) => {
   var now = new Date();
   while (startDate <= now) {
     var fareData = '';
-    var prettyDate = startDate.format('YYYYMMDDHHmm');
+    var prettyDate = startDate.format('YYMMDDHHmm');
     for (var i = 0; i < zips.length; i++) {
-      fareData = fareData.concat(`${zips[i].toString()},${Number((Math.random() + 1).toFixed(5))},${Number(prettyDate)}\n`)
+      fareData = fareData.concat(`${zips[i].toString()},${(Math.random() + 1).toFixed(5)},${Number(prettyDate)}\n`)
     }
     wstream.write(fareData);
     startDate.add(mins, 'minute');
@@ -21,7 +21,7 @@ var generateData = (startDate, mins) => {
 var startTime = new Date()
 console.log('start: ', startTime)
 
-var start = moment('01/01/17', 'DD/MM/YY');
+var start = moment('02/01/17', 'DD/MM/YY');
 generateData(start, 1);
 
 var endTime = new Date()

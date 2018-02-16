@@ -1,5 +1,5 @@
 config:
-  target: 'http://localhost:9000'
+  target: 'https://ec2-18-219-125-116.us-east-2.compute.amazonaws.com:9000'
   phases:
     # - duration: 60
     #   arrivalRate: 450
